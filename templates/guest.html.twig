@@ -1,0 +1,35 @@
+{# ** @file
+ * Default theme implementation to present Guest data.
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ *          content.field_name to access public fields
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see levchik_preprocess_guest()
+ *
+ * @ingroup themeable
+ */
+#}
+<div {{ attributes.addClass('guest-item') }}>
+  <div class="user-data">
+    <div class="avatar-container">
+      {{ content.avatar }}
+    </div>
+    <span class="name">{{ content.name }}</span>
+    <time class="posted-time">{{ content.created }}</time>
+  </div>
+  <div class="feedback clearfix">
+    <div class="picture-container">
+        {{ content.picture }}
+    </div>
+    {{ content.message }}
+  </div>
+  <div class="contact-data">
+    <span class="email">{{ content.email }}</span>
+    <span class="phone">{{ content.phone }}</span>
+    {% if user.hasPermission('edit guest entity') or user.hasPermission('delete guest entity') %}
+      {{ buttons }}
+    {% endif %}
+  </div>
+</div>

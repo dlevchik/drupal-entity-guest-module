@@ -1,0 +1,4 @@
+entity.guest.collection:
+  title: 'Guests'
+  route_name: entity.guest.collection
+  parent: system.admin_content

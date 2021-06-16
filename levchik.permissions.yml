@@ -1,0 +1,11 @@
+delete guest entity:
+  title: Delete guest entity content.
+
+add guest entity:
+  title: Add guest entity content
+
+view guest entity:
+  title: View guest entity content
+
+edit guest entity:
+  title: Edit guest entity content

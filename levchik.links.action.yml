@@ -1,0 +1,5 @@
+levchik.guest_add:
+  route_name: entity.guest.add_form
+  title: 'Add Guest'
+  appears_on:
+    - entity.guest.collection

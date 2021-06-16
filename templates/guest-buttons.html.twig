@@ -1,0 +1,15 @@
+<span class="guest-buttons-drop-out">
+  <a href="#" type="button" role="button" class="guest-actions-toggle"><strong>...</strong></a>
+  <div class="btn-group guest-actions" role="group">
+    {% if user.hasPermission('delete guest entity') %}
+      <a class="btn btn-outline-danger"
+         type="button"
+         href="/admin/content/guests/manage/{{ id }}/delete">{{ "Delete guest"|t }}</a>
+    {% endif %}
+    {% if user.hasPermission('edit guest entity') %}
+      <a class="btn btn-outline-warning"
+         type="button"
+         href="/admin/content/guests/manage/{{ id }}">{{ "Edit guest"|t }}</a>
+    {% endif %}
+  </div>
+</span>

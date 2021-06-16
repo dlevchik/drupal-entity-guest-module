@@ -1,0 +1,8 @@
+name: 'Levchik'
+type: module
+description: 'Guest feedback entity type.'
+core_version_requirement: 9.x
+package: 'Custom'
+dependencies:
+  - drupal:telephone
+  - drupal:image

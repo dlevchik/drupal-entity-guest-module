@@ -1,0 +1,8 @@
+
+levchik.levchik_controller_build:
+  path: '/levchik/guest-book'
+  defaults:
+    _controller: '\Drupal\levchik\Controller\LevchikController::build'
+    _title: 'Guest Book'
+  requirements:
+    _permission: 'access content'
