@@ -6,7 +6,7 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\levchik\Entity\Guest;
 
 /**
- * Class LevchikController.
+ * Provides LevchikController class for guests page.
  */
 class LevchikController extends ControllerBase {
 

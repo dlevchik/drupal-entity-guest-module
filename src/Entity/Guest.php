@@ -26,18 +26,17 @@ use Drupal\Core\Field\BaseFieldDefinition;
  *     "langcode" = "langcode",
  *   },
  *   handlers = {
- *     "access" = "Drupal\levchik\GuestAccessControlHandler",
+ *     "access" = "Drupal\Core\Entity\EntityAccessControlHandler",
  *     "form" = {
  *       "add" = "Drupal\levchik\Form\GuestForm",
  *       "default" = "Drupal\levchik\Form\GuestForm",
  *       "edit" = "Drupal\levchik\Form\GuestForm",
- *       "delete" = "Drupal\Core\Entity\ContentEntityDeleteForm",
+ *       "delete" = "Drupal\levchik\Form\GuestDeleteForm",
  *     },
  *     "permission_provider" = "Drupal\Core\Entity\EntityPermissionProvider",
  *     "route_provider" = {
  *       "default" = "Drupal\Core\Entity\Routing\DefaultHtmlRouteProvider",
  *     },
- *     "list_builder" = "Drupal\levchik\Controller\GuestListBuilder",
  *     "local_action_provider" = {
  *       "collection" = "Drupal\Core\Entity\Menu\EntityCollectionLocalActionProvider",
  *     },
@@ -48,7 +47,7 @@ use Drupal\Core\Field\BaseFieldDefinition;
  *     "add-form" = "/admin/content/guests/add",
  *     "edit-form" = "/admin/content/guests/manage/{guest}",
  *     "delete-form" = "/admin/content/guests/manage/{guest}/delete",
- *     "collection" = "/admin/content/guests",
+ *     "collection" = "/levchik/guest-book",
  *   },
  *   admin_permission = "administer guest",
  * )
@@ -59,7 +58,17 @@ class Guest extends ContentEntityBase {
    * Get guest feedback message.
    */
   public function getDefaultAvatar() {
-    return '/modules/custom/levchik/img/download.jpeg';
+    return '/' . drupal_get_path('module', 'levchik') . '/img/download.jpeg';
+  }
+
+  /**
+   * Get name of main route.
+   *
+   * @return string
+   *   name of main route
+   */
+  public function getRouteName() {
+    return 'levchik.levchik_controller_build';
   }
 
   /**
@@ -159,7 +168,7 @@ class Guest extends ContentEntityBase {
     $fields['message'] = BaseFieldDefinition::create('text_long')
       ->setLabel(t('Message'))
       ->setDescription(t('Guest feedback message.'))
-      ->setRequired(TRUE)
+      ->setRequired(FALSE)
       ->setTranslatable(TRUE)
       ->setDisplayOptions('view', [
         'label' => 'hidden',

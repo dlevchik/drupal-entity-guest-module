@@ -1,13 +1,29 @@
+{# ** @file
+ * Default theme implementation to present Guest buttons.
+ *
+ * Available variables:
+ * - id: id of guest to perform action with
+ *
+ * @see levchik_preprocess_guest()
+ *
+ * @ingroup themeable
+ */
+#}
+{{ attach_library('core/drupal.dialog.ajax') }}
 <span class="guest-buttons-drop-out">
   <a href="#" type="button" role="button" class="guest-actions-toggle"><strong>...</strong></a>
   <div class="btn-group guest-actions" role="group">
     {% if user.hasPermission('delete guest entity') %}
-      <a class="btn btn-outline-danger"
+      <a class="btn btn-outline-danger use-ajax"
+         data-dialog-options="{&quot;width&quot;:400}"
+         data-dialog-type="modal"
          type="button"
          href="/admin/content/guests/manage/{{ id }}/delete">{{ "Delete guest"|t }}</a>
     {% endif %}
     {% if user.hasPermission('edit guest entity') %}
-      <a class="btn btn-outline-warning"
+      <a class="btn btn-outline-warning use-ajax"
+         data-dialog-options="{&quot;width&quot;:400}"
+         data-dialog-type="modal"
          type="button"
          href="/admin/content/guests/manage/{{ id }}">{{ "Edit guest"|t }}</a>
     {% endif %}

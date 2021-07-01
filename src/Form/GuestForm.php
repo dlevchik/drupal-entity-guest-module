@@ -4,6 +4,7 @@ namespace Drupal\levchik\Form;
 
 use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 
 /**
  * Provides a Guest entity form.
@@ -28,7 +29,7 @@ class GuestForm extends ContentEntityForm {
     $this->logger($entity->getEntityTypeId())->notice('The @entity_type %entity has been saved.', $arguments);
     $this->messenger()->addStatus($this->t('The @entity_type %entity has been saved.', $arguments));
 
-    $form_state->setRedirectUrl($entity->toUrl('canonical'));
+    $form_state->setRedirectUrl(Url::fromRoute($entity->getRouteName()));
   }
 
 }

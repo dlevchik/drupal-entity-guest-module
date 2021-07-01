@@ -1,4 +1,4 @@
-entity.guest.collection:
+entity.guests_link:
   title: 'Guests'
-  route_name: entity.guest.collection
-  parent: system.admin_content
+  route_name: levchik.levchik_controller_build
+  menu_name: main
